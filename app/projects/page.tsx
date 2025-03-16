@@ -29,11 +29,11 @@ const projects: Project[] = [
   {
     id: "sentify",
     title: "Sentify",
-    category: "Mobile App",
+    category: "Web App",
     date: "2023",
     description:
       "Interactive UI/UX Design Inspired by Inside Out, focused on emotional reflection with features like a discussion forum, story panel, analytics dashboard, and personalized music recommendations.",
-    tags: ["UI/UX", "Mobile", "Emotion", "Music"],
+    tags: ["UI/UX", "Web App", "Emotion", "Music"],
     image: "/Sentify_main.png?height=600&width=300",
     secondaryImage: "/Sentify_back.png?height=600&width=300",
     link: "http://bit.ly/4kae47p",
