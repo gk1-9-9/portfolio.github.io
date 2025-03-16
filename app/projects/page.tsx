@@ -86,11 +86,11 @@ const projects: Project[] = [
   {
     id: "notable-notification",
     title: "Notable Notification (Blinkx)",
-    category: "AI System",
+    category: "Business Analysis",
     date: "2024",
     description:
       "Developed an AI-driven smart notification system, personalizing alerts based on user behavior and contextual relevance with NLP-based text summarization to enhance notification clarity and reduce cognitive overload.",
-    tags: ["AI", "UX", "Notifications", "NLP"],
+    tags: ["AI", "UX", "Notifications"],
     image: "/blinx-1.png?height=600&width=300",
     link: "https://drive.google.com/file/d/1SkcMtIQ3wtIEabUoUZMbG92ghdhefddA/view",
   },
@@ -99,13 +99,12 @@ const projects: Project[] = [
 // Categories for filtering
 const categories = [
   "All",
-  "Mobile App",
+  "Web App",
   "Web Platform",
   "Web Design",
   "Web & Extension",
   "Business Analysis",
-  "Product Analysis",
-  "AI System",
+  "Product Analysis",,
 ]
 
 export default function ProjectsPage() {
