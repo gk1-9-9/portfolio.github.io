@@ -310,7 +310,7 @@ export default function Home() {
           <div className="relative w-full md:w-1/2 flex justify-center">
             <motion.div whileHover={{ scale: 1.03 }} transition={{ type: "spring", stiffness: 300, damping: 15 }}>
               <Image
-                src="/me.png?height=400&width=500"
+                src="/Me.png?height=400&width=500"
                 alt="Gaurav Kumar at desk"
                 width={400}
                 height={300}
