@@ -58,7 +58,7 @@ export default function AboutPage() {
                 animate={{ opacity: 1, y: 0 }}
               >
                 <Image 
-                  src="/me.png?height=400&width=300" 
+                  src="/Me.png?height=400&width=300" 
                   alt="Gaurav Kumar" 
                   width={300} 
                   height={400} 
