@@ -102,11 +102,12 @@ export default function Home() {
 
       {/* Hero Section */}
       <motion.section
-        className="h-screen flex flex-col justify-center items-center px-4"
+        className="relative h-screen flex flex-col justify-center items-center px-4"
         style={{
           backgroundImage: "radial-gradient(circle at center, rgba(255,215,0,0.1) 0%, transparent 70%)",
         }}
       >
+
         <motion.h2
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -122,7 +123,7 @@ export default function Home() {
           className="text-5xl md:text-6xl font-bold max-w-3xl mx-auto leading-tight text-center"
         >
           I&apos;m Gaurav Kumar a{" "}
-          <span className="text-gold dark:text-gold bg-gradient-to-r from-gold/10 to-transparent px-2 py-1 rounded-lg">
+          <span className="text-gold dark:text-gold">
             <TypingAnimation
               words={[
                 "UI/UX Designer",
@@ -162,7 +163,7 @@ export default function Home() {
         </motion.div>
       </motion.section>
 
-      {/* Projects Section - Pushed back to be visible only after scrolling */}
+      {/* Projects Section */}
       <motion.section
         ref={projectsRef}
         initial="hidden"
