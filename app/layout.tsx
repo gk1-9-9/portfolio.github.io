@@ -10,6 +10,9 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata = {
   title: "Gaurav Kumar",
   description: "Portfolio of Gaurav Kumar",
+  icons: {
+    icon: "/favicon.jpg",
+  },
 }
 
 
@@ -23,7 +26,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <div className="relative min-h-screen flex flex-col">
-            <link rel="icon" href="/favicon.png" type="image/png" />
+            <link rel="icon" href="/favicon.jpg" type="image/jpg" />
             <SiteHeader />
             <main className="flex-1">{children}</main>
           </div>
