@@ -10,6 +10,7 @@ import { useEffect, useRef, useState } from "react"
 import { LoadingAnimation } from "@/components/loading-animation"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Footer } from "@/components/footer"
+import { TypingAnimation } from "@/components/typing-animation"
 
 // Project data
 const projects = [
@@ -122,7 +123,16 @@ export default function Home() {
         >
           I&apos;m Gaurav Kumar a{" "}
           <span className="text-gold dark:text-gold bg-gradient-to-r from-gold/10 to-transparent px-2 py-1 rounded-lg">
-            UI/UX Designer
+            <TypingAnimation
+              words={[
+                "UI/UX Designer",
+                "Front End Developer",
+                "Product Designer",
+                "Software Engineer",
+                "Visual Designer",
+                "Creative Coder",
+              ]}
+            />
           </span>
         </motion.h1>
         <motion.div
