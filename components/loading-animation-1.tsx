@@ -192,40 +192,6 @@ export function LoadingAnimationmain() {
           </motion.p>
         </motion.div>
 
-        {/* Name Animation */}
-        <AnimatePresence>
-          {showName && (
-            <motion.div
-              initial={{ opacity: 0, y: 50, scale: 0.8 }}
-              animate={{
-                opacity: 1,
-                y: 0,
-                scale: 1,
-                top: namePosition === "topRight" ? "2rem" : "auto",
-                right: namePosition === "topRight" ? "2rem" : "auto",
-                position: namePosition === "topRight" ? "absolute" : "relative",
-                translateX: namePosition === "topRight" ? "0%" : "-50%",
-                translateY: namePosition === "topRight" ? "0%" : "-50%",
-              }}
-              exit={{ opacity: 0 }}
-              transition={{
-                duration: 0.8,
-                type: "spring",
-                stiffness: 100,
-              }}
-              className={`${namePosition === "topRight" ? "text-right" : "text-center"}`}
-            >
-              <h1
-                className={`font-bold bg-gradient-to-r from-gold to-gold/70 bg-clip-text text-transparent ${namePosition === "topRight" ? "text-2xl" : "text-4xl md:text-5xl"}`}
-              >
-                Gaurav Kumar
-              </h1>
-              {namePosition !== "topRight" && (
-                <p className="text-slate-700 dark:text-slate-300 mt-2">UI/UX Designer & Front End Developer</p>
-              )}
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
     </div>
   )

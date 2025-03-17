@@ -8,13 +8,14 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { useTheme } from "next-themes"
 import { useEffect, useRef, useState } from "react"
 import { LoadingAnimation } from "@/components/loading-animation"
+import { LoadingAnimationmain } from "@/components/loading-animation-1"
 import { Footer } from "@/components/footer"
 import { TypingAnimation } from "@/components/typing-animation"
 import { QuoteCarousel } from "@/components/quote-carousel"
 
 
 // Project data
-const projects = [
+const projects = [  
   {
     id: "sentify",
     title: "Sentify",
@@ -46,6 +47,7 @@ const projects = [
 export default function Home() {
   const { theme } = useTheme()
   const [loading, setLoading] = useState(true)
+  const [isFirstVisit, setIsFirstVisit] = useState(true)
   const [mounted, setMounted] = useState(false)
   const [activeProject, setActiveProject] = useState<string | null>(null)
   const containerRef = useRef(null)
@@ -60,23 +62,19 @@ export default function Home() {
 
   useEffect(() => {
     setMounted(true)
-
-    // Check if this is the first visit
-    const isFirstVisit = localStorage.getItem("hasVisited") !== "true"
-
-    if (isFirstVisit) {
-      // Set loading time for first visit
-      const timer = setTimeout(() => {
-        setLoading(false)
-        // Set flag in localStorage
-        localStorage.setItem("hasVisited", "true")
-      }, 5500) // Longer time for first visit to see the full animation
-
-      return () => clearTimeout(timer)
-    } else {
-      // Skip loading for returning visitors
+    // Determine if it's the first visit
+    const firstVisit = localStorage.getItem("hasVisited") !== "true"
+    setIsFirstVisit(firstVisit)
+  
+    // Use 5500ms for first visit, 2000ms for returning visitors
+    const timer = setTimeout(() => {
       setLoading(false)
-    }
+      if (firstVisit) {
+        localStorage.setItem("hasVisited", "true")
+      }
+    }, firstVisit ? 5500 : 2000)
+  
+    return () => clearTimeout(timer)
   }, [])
 
   const fadeIn = {
@@ -99,8 +97,9 @@ export default function Home() {
   }
 
   if (loading) {
-    return <LoadingAnimation />
+    return isFirstVisit ? <LoadingAnimationmain /> : <LoadingAnimation />
   }
+  
 
   return (
     <div
