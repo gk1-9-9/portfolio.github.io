@@ -61,22 +61,23 @@ export default function Home() {
   const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.8])
 
   useEffect(() => {
-    setMounted(true)
-    // Determine if it's the first visit
-    const firstVisit = localStorage.getItem("hasVisited") !== "true"
-    setIsFirstVisit(firstVisit)
+    setMounted(true);
+  
+    // Determine if it's the first visit in this session
+    const firstVisit = sessionStorage.getItem("hasVisited") !== "true";
+    setIsFirstVisit(firstVisit);
   
     // Use 5500ms for first visit, 2000ms for returning visitors
     const timer = setTimeout(() => {
-      setLoading(false)
+      setLoading(false);
       if (firstVisit) {
-        localStorage.setItem("hasVisited", "true")
+        sessionStorage.setItem("hasVisited", "true");
       }
-    }, firstVisit ? 5500 : 2000)
+    }, firstVisit ? 5500 : 2000);
   
-    return () => clearTimeout(timer)
-  }, [])
-
+    return () => clearTimeout(timer);
+  }, []);
+  
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: {
