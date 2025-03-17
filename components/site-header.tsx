@@ -1,97 +1,122 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { motion } from "framer-motion"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { Button } from "@/components/ui/button"
-import { Menu } from "lucide-react"
-import { useState } from "react"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { Menu, X, Moon, Sun, Home, User, FileText, Mail, Briefcase } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useTheme } from "next-themes";
 
 export function SiteHeader() {
-  const pathname = usePathname()
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { theme, setTheme } = useTheme();
+  const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  if (!mounted) return null; // Prevent hydration mismatch
 
   const navItems = [
-    { href: "/", label: "HOME" },
-    { href: "/about", label: "ABOUT" },
-    { href: "/resume", label: "RESUME" },
-  ]
+    { name: "Home", href: "/", icon: <Home className="h-4 w-4" /> },
+    { name: "About", href: "/about", icon: <User className="h-4 w-4" /> },
+    { name: "Resume", href: "/resume", icon: <FileText className="h-4 w-4" /> },
+    { name: "Projects", href: "/projects", icon: <Briefcase className="h-4 w-4" /> },
+    { name: "Contact", href: "/contact", icon: <Mail className="h-4 w-4" /> },
+  ];
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      className="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-silver/80 dark:bg-navy/80 backdrop-blur-sm"
-    >
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="font-medium text-gold"
-        >
-          <Link href="/" className="hover:text-gold/80 transition-colors">
-            Gaurav Kumar
-          </Link>
-        </motion.div>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/10 backdrop-blur-md dark:bg-navy/10 shadow-sm' : 'bg-transparent'}`}>
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="flex-shrink-0"
+          >
+            <Link href="/" className="text-2xl font-bold tracking-wider text-transparent bg-gradient-to-r from-gold to-gold/70 bg-clip-text">
+              GK
+            </Link>
+          </motion.div>
 
-        {/* Mobile menu button */}
-        <div className="md:hidden flex items-center gap-2">
-          <ThemeToggle />
-          <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-gold">
-            <Menu className="h-5 w-5" />
-          </Button>
-        </div>
-
-        {/* Desktop navigation */}
-        <nav className="hidden md:flex items-center gap-6">
-          {navItems.map((item, index) => (
-            <motion.div
-              key={item.href}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 + 0.2 }}
-            >
-              <Link
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
+            {navItems.map((item) => (
+              <Link 
+                key={item.name} 
                 href={item.href}
-                className={`relative hover:text-gold transition-colors ${pathname === item.href ? "text-gold" : ""}`}
+                className={`text-sm font-medium transition-colors hover:text-gold ${pathname === item.href ? 'text-gold' : 'text-black dark:text-white/90'}`}
               >
-                {pathname === item.href && (
-                  <motion.span layoutId="underline" className="absolute left-0 top-full block h-[2px] w-full bg-gold" />
-                )}
-                {item.label}
+                {item.name}
               </Link>
-            </motion.div>
-          ))}
-          <ThemeToggle />
-        </nav>
+            ))}
+          </nav>
+
+          {/* Theme Toggle & Mobile Menu Button */}
+          <div className="flex items-center space-x-4">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="hover:text-gold hover:bg-transparent"
+            >
+              {theme === "dark" ? <Sun className="h-5 w-5 text-white" /> : <Moon className="h-5 w-5 text-black" />}
+              <span className="sr-only">Toggle theme</span>
+            </Button>
+
+            <Button
+              variant="ghost"
+              size="icon"
+              className="md:hidden"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              <span className="sr-only">Toggle menu</span>
+            </Button>
+          </div>
+        </div>
       </div>
 
-      {/* Mobile menu */}
-      {mobileMenuOpen && (
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
-          className="md:hidden border-t border-slate-200 dark:border-slate-800"
+          className="md:hidden bg-white/10 backdrop-blur-md dark:bg-navy/10 border-t border-white/10"
         >
-          <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`py-2 ${pathname === item.href ? "text-gold" : ""}`}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
+          <div className="container mx-auto px-4 py-4">
+            <nav className="flex flex-col space-y-4">
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`flex items-center gap-2 p-2 rounded-md transition-colors ${pathname === item.href ? 'text-gold bg-white/5' : 'text-black dark:text-white/90 hover:bg-white/5 hover:text-gold'}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.icon}
+                  {item.name}
+                </Link>
+              ))}
+            </nav>
           </div>
         </motion.div>
       )}
-    </motion.header>
-  )
+    </header>
+  );
 }
-

@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import {
   Download,
-  ChevronLeft,
   Award,
   BookOpen,
   Briefcase,
@@ -60,12 +59,6 @@ export default function ResumePage() {
       >
         {/* Back to Home Link */}
         <div className="max-w-4xl mx-auto">
-          <Link href="/">
-            <Button variant="ghost" className="group mb-4 pl-0 hover:bg-transparent">
-              <ChevronLeft className="mr-1 h-4 w-4 transition-transform group-hover:-translate-x-1" />
-              Back to Home
-            </Button>
-          </Link>
 
           {/* Heading & Download PDF */}
           <div className="flex justify-between items-center mb-8">

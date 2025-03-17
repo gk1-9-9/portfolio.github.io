@@ -120,7 +120,7 @@ export default function ProjectsPage() {
     offset: ["start start", "end end"],
   })
 
-  const progressBarWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
+  const progressBarWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]); 
 
   useEffect(() => {
     setMounted(true)
@@ -146,7 +146,9 @@ export default function ProjectsPage() {
     return <LoadingAnimation />
   }
 
+  
   return (
+    
     <div
       className="min-h-screen bg-silver dark:bg-navy text-slate-900 dark:text-white"
       ref={containerRef}
@@ -155,6 +157,7 @@ export default function ProjectsPage() {
       }}
     >
 
+        
       {/* Progress bar */}
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-gold z-50" style={{ width: progressBarWidth }} />
 
@@ -348,6 +351,8 @@ export default function ProjectsPage() {
             >
               Clear filters
             </Button>
+
+            
           </motion.div>
         )}
       </main>

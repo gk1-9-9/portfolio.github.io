@@ -64,7 +64,7 @@ export function QuoteCarousel() {
 
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % quotes.length)
-    }, 8000)
+    }, 2000)
 
     return () => clearInterval(interval)
   }, [isAutoplay])

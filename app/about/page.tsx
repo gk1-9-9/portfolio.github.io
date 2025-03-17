@@ -4,11 +4,24 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { MapPin, Mail, Linkedin, Github, Phone, Code, Palette, Database, Cpu, BookOpen, Award, Lightbulb, Briefcase } from 'lucide-react'
+import {
+  MapPin,
+  Mail,
+  Linkedin,
+  Github,
+  Phone,
+  Code,
+  Palette,
+  Database,
+  Cpu,
+  BookOpen,
+  Award,
+  Lightbulb,
+  Briefcase,
+} from "lucide-react"
 import { useEffect, useState } from "react"
 import { LoadingAnimation } from "@/components/loading-animation"
 import { Footer } from "@/components/footer"
-import { ThemeToggle } from "@/components/theme-toggle"
 
 export default function AboutPage() {
   const [loading, setLoading] = useState(true)
@@ -26,7 +39,7 @@ export default function AboutPage() {
   }
 
   return (
-    <div 
+    <div
       className="bg-silver dark:bg-navy text-slate-900 dark:text-white"
       style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff10' fillOpacity='0.1' fillRule='evenodd'/%3E%3C/svg%3E")`,
@@ -38,13 +51,14 @@ export default function AboutPage() {
         transition={{ duration: 0.5 }}
         className="container mx-auto px-4 py-16"
       >
+    
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
           className="max-w-4xl mx-auto"
         >
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -52,7 +66,7 @@ export default function AboutPage() {
           >
             About Me
           </motion.h1>
-          
+
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <div className="md:col-span-1">
               <motion.div
@@ -61,16 +75,16 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
               >
-                <Image 
-                  src="/Me.png?height=400&width=300" 
-                  alt="Gaurav Kumar" 
-                  width={300} 
-                  height={400} 
+                <Image
+                  src="/Me.png?height=400&width=300"
+                  alt="Gaurav Kumar"
+                  width={300}
+                  height={400}
                   className="rounded-lg shadow-lg w-full"
                 />
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
@@ -90,22 +104,22 @@ export default function AboutPage() {
                     bt22cse001@iiitn.ac.in
                   </a>
                 </div>
-                
+
                 <div className="flex gap-4 pt-2">
-                  <motion.a 
+                  <motion.a
                     whileHover={{ y: -3, scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 400 }}
-                    href="https://www.linkedin.com/in/gkgauravkumar/" 
+                    href="https://www.linkedin.com/in/gkgauravkumar/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gold hover:text-gold/80 transition-colors"
                   >
                     <Linkedin className="h-5 w-5" />
                   </motion.a>
-                  <motion.a 
+                  <motion.a
                     whileHover={{ y: -3, scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 400 }}
-                    href="https://github.com/gk1-9-9" 
+                    href="https://github.com/gk1-9-9"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gold hover:text-gold/80 transition-colors"
@@ -115,9 +129,9 @@ export default function AboutPage() {
                 </div>
               </motion.div>
             </div>
-            
+
             <div className="md:col-span-2 space-y-6">
-              <motion.h2 
+              <motion.h2
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
@@ -125,34 +139,41 @@ export default function AboutPage() {
               >
                 Hi there!
               </motion.h2>
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="text-slate-700 dark:text-slate-300"
               >
-                I'm Gaurav Kumar, a Computer Science student at Indian Institute of Information Technology, Nagpur.
-                I'm passionate about creating user-centered designs that solve real problems and enhance user experiences.
+                I'm Gaurav Kumar, a UI/UX Designer and Computer Science student at Indian Institute of Information
+                Technology, Nagpur. I'm passionate about creating user-centered designs that solve real problems and
+                enhance user experiences.
               </motion.p>
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
                 className="text-slate-700 dark:text-slate-300"
               >
-                With hands-on experience in designing corporate decks and product layouts, I specialize in creating self-explanatory, visually impactful designs that tell a story. My work isn't just about making things look pretty—it's about driving decisions, engaging audiences, and simplifying complexity. I focus on delivering designs that speak for themselves, ensuring they resonate with both users and stakeholders.
+                With hands-on experience in designing corporate decks and product layouts, I specialize in creating
+                self-explanatory, visually impactful designs that tell a story. My work isn't just about making things
+                look pretty—it's about driving decisions, engaging audiences, and simplifying complexity. I focus on
+                delivering designs that speak for themselves, ensuring they resonate with both users and stakeholders.
               </motion.p>
 
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
                 className="text-slate-700 dark:text-slate-300"
               >
-                I'm passionate about customer-centric innovation, transforming user insights into intuitive, meaningful experiences. By blending my technical expertise with a deep understanding of user behavior, I create designs that not only enhance user satisfaction but also fuel business growth. Let's build something that doesn't just meet expectations—it exceeds them.
+                I'm passionate about customer-centric innovation, transforming user insights into intuitive, meaningful
+                experiences. By blending my technical expertise with a deep understanding of user behavior, I create
+                designs that not only enhance user satisfaction but also fuel business growth. Let's build something
+                that doesn't just meet expectations—it exceeds them.
               </motion.p>
-              
-              <motion.h3 
+
+              <motion.h3
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.7 }}
@@ -160,22 +181,21 @@ export default function AboutPage() {
               >
                 My Design Philosophy
               </motion.h3>
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
                 className="text-slate-700 dark:text-slate-300"
               >
-                I believe that great design is not just about aesthetics, but about solving 
-                real problems for real people. I approach each project with empathy, 
-                curiosity, and a commitment to creating solutions that are both beautiful 
-                and functional.
+                I believe that great design is not just about aesthetics, but about solving real problems for real
+                people. I approach each project with empathy, curiosity, and a commitment to creating solutions that are
+                both beautiful and functional.
               </motion.p>
-              
-              <motion.div 
-                initial={{opacity: 0, y: 20}}
-                animate={{opacity: 1, y: 0}}
-                transition={{duration: 0.6, delay: 0.9}}
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.9 }}
                 className="pt-6"
               >
                 <Button asChild variant="default" className="bg-gold hover:bg-gold/90 text-navy rounded-full px-6">
@@ -184,16 +204,12 @@ export default function AboutPage() {
               </motion.div>
             </div>
           </div>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-          >
+
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
             <h2 className="text-3xl font-bold mb-8">Skills & Expertise</h2>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-              <motion.div 
+              <motion.div
                 whileHover={{ y: -5, scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 className="p-6 rounded-lg bg-paleyellow/30 dark:bg-navy-light border border-gold/10"
@@ -227,8 +243,8 @@ export default function AboutPage() {
                   </li>
                 </ul>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 whileHover={{ y: -5, scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 className="p-6 rounded-lg bg-paleyellow/30 dark:bg-navy-light border border-gold/10"
@@ -262,8 +278,8 @@ export default function AboutPage() {
                   </li>
                 </ul>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 whileHover={{ y: -5, scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 className="p-6 rounded-lg bg-paleyellow/30 dark:bg-navy-light border border-gold/10"
@@ -297,8 +313,8 @@ export default function AboutPage() {
                   </li>
                 </ul>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 whileHover={{ y: -5, scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 className="p-6 rounded-lg bg-paleyellow/30 dark:bg-navy-light border border-gold/10"
@@ -332,8 +348,8 @@ export default function AboutPage() {
                   </li>
                 </ul>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 whileHover={{ y: -5, scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 className="p-6 rounded-lg bg-paleyellow/30 dark:bg-navy-light border border-gold/10"
@@ -367,8 +383,8 @@ export default function AboutPage() {
                   </li>
                 </ul>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 whileHover={{ y: -5, scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 className="p-6 rounded-lg bg-paleyellow/30 dark:bg-navy-light border border-gold/10"
@@ -403,11 +419,11 @@ export default function AboutPage() {
                 </ul>
               </motion.div>
             </div>
-            
+
             <h2 className="text-3xl font-bold mb-8">Achievements</h2>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-              <motion.div 
+              <motion.div
                 whileHover={{ y: -5, scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 className="p-6 rounded-lg bg-paleyellow/30 dark:bg-navy-light border border-gold/10"
@@ -422,8 +438,8 @@ export default function AboutPage() {
                   Competed against 29,174 participants and secured first place in this prestigious competition.
                 </p>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 whileHover={{ y: -5, scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 className="p-6 rounded-lg bg-paleyellow/30 dark:bg-navy-light border border-gold/10"
@@ -438,8 +454,8 @@ export default function AboutPage() {
                   Built an AI-based Jaundice and Acne Detection system that won first place.
                 </p>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 whileHover={{ y: -5, scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 className="p-6 rounded-lg bg-paleyellow/30 dark:bg-navy-light border border-gold/10"
@@ -454,8 +470,8 @@ export default function AboutPage() {
                   Won first place at IIT Kanpur's Analytics Attax competition.
                 </p>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 whileHover={{ y: -5, scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 className="p-6 rounded-lg bg-paleyellow/30 dark:bg-navy-light border border-gold/10"
@@ -479,3 +495,4 @@ export default function AboutPage() {
     </div>
   )
 }
+
