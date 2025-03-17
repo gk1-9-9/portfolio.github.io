@@ -30,7 +30,7 @@ const projects: Project[] = [
     id: "sentify",
     title: "Sentify",
     category: "Web Design, Web Platform",
-    date: "2023",
+    date: "2024",
     description:
       "Interactive UI/UX Design Inspired by Inside Out, focused on emotional reflection with features like a discussion forum, story panel, analytics dashboard, and personalized music recommendations.",
     tags: ["UI/UX", "Web App", "Emotion", "Music"],
@@ -42,7 +42,7 @@ const projects: Project[] = [
     id: "starwars",
     title: "Star Wars Fandom Hub",
     category: "Web Platform",
-    date: "2022",
+    date: "2024",
     description:
       "A Fan Art Showcase Platform for Star Wars fans to share, discover, and celebrate fan art, featuring a dynamic gallery and discussion forum with an immersive Millennium Falcon-themed loading screen.",
     tags: ["Web", "Community", "Gallery", "Fan Art"],
@@ -53,7 +53,7 @@ const projects: Project[] = [
     id: "news-summify",
     title: "News-Summify",
     category: "Web & Extension",
-    date: "2023",
+    date: "2024",
     description:
       "Keyword-based Article Discovery & Summarization platform integrating a web application with a browser extension, enabling seamless keyword-based article discovery and real-time summarization across 150+ topics.",
     tags: ["Web", "Extension", "AI", "News"],
