@@ -29,14 +29,14 @@ const projects: Project[] = [
   {
     id: "sentify",
     title: "Sentify",
-    category: "Web App",
+    category: "Web Design, Web Platform",
     date: "2023",
     description:
       "Interactive UI/UX Design Inspired by Inside Out, focused on emotional reflection with features like a discussion forum, story panel, analytics dashboard, and personalized music recommendations.",
     tags: ["UI/UX", "Web App", "Emotion", "Music"],
     image: "/Sentify_main.png?height=600&width=300",
     secondaryImage: "/Sentify_back.png?height=600&width=300",
-    link: "http://bit.ly/4kae47p",
+    link: "https://www.figma.com/proto/3AJTdLIQxEDhWmt6y5kpOb/designathon?page-id=0%3A1&node-id=10-836&starting-point-node-id=10%3A836&t=52IKbJpSs9jQiV0J-1",
   },
   {
     id: "starwars",
@@ -47,7 +47,7 @@ const projects: Project[] = [
       "A Fan Art Showcase Platform for Star Wars fans to share, discover, and celebrate fan art, featuring a dynamic gallery and discussion forum with an immersive Millennium Falcon-themed loading screen.",
     tags: ["Web", "Community", "Gallery", "Fan Art"],
     image: "/Starwars-1.png?height=500&width=600",
-    link: "/projects/starwars",
+    link: "https://www.figma.com/proto/AttwGLzhNcZ3fQ0hianHGb/Starwars?page-id=0%3A1&node-id=1-3&p=f&viewport=308%2C484%2C0.15&t=XXIOaisCZQeTmM23-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=102%3A120",
   },
   {
     id: "news-summify",
@@ -64,7 +64,7 @@ const projects: Project[] = [
   {
     id: "pel-market",
     title: "PEL Market Expansion Strategy",
-    category: "Business Analysis",
+    category: "Business Analysis, Product Analysis",
     date: "2025",
     description:
       "Developed a market expansion strategy for PEL to shift from imported to in-house centrifugal compressor manufacturing, targeting 20% market share through an 18-month supply chain.",
@@ -99,7 +99,6 @@ const projects: Project[] = [
 // Categories for filtering
 const categories = [
   "All",
-  "Web App",
   "Web Platform",
   "Web Design",
   "Web & Extension",
