@@ -3,14 +3,14 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, ExternalLink, ChevronRight } from 'lucide-react'
+import { ArrowRight, ExternalLink, ChevronRight } from "lucide-react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useTheme } from "next-themes"
 import { useEffect, useRef, useState } from "react"
 import { LoadingAnimation } from "@/components/loading-animation"
-import { ThemeToggle } from "@/components/theme-toggle"
 import { Footer } from "@/components/footer"
 import { TypingAnimation } from "@/components/typing-animation"
+import { QuoteCarousel } from "@/components/quote-carousel"
 
 // Project data
 const projects = [
@@ -59,11 +59,23 @@ export default function Home() {
 
   useEffect(() => {
     setMounted(true)
-    const timer = setTimeout(() => {
-      setLoading(false)
-    }, 2000)
 
-    return () => clearTimeout(timer)
+    // Check if this is the first visit
+    const isFirstVisit = localStorage.getItem("hasVisited") !== "true"
+
+    if (isFirstVisit) {
+      // Set loading time for first visit
+      const timer = setTimeout(() => {
+        setLoading(false)
+        // Set flag in localStorage
+        localStorage.setItem("hasVisited", "true")
+      }, 5500) // Longer time for first visit to see the full animation
+
+      return () => clearTimeout(timer)
+    } else {
+      // Skip loading for returning visitors
+      setLoading(false)
+    }
   }, [])
 
   const fadeIn = {
@@ -99,20 +111,26 @@ export default function Home() {
         }' fillOpacity='0.1' fillRule='evenodd'/%3E%3C/svg%3E")`,
       }}
     >
-
-      {/* Hero Section */}
-      <motion.section
-        className="relative h-screen flex flex-col justify-center items-center px-4"
-        style={{
-          backgroundImage: "radial-gradient(circle at center, rgba(255,215,0,0.1) 0%, transparent 70%)",
-        }}
-      >
+      {/* Hero Section with Mountain Background */}
+      <motion.section className="relative h-screen flex flex-col justify-center items-center px-4 overflow-hidden">
+        {/* Mountain Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Mountain-hero.png-bRm40qOoVtp51IXaAxRv0IM52i4DFN.jpeg"
+            alt="Mountain path with light beam"
+            fill
+            priority
+            className="object-cover object-center"
+          />
+          {/* Overlay to ensure text readability */}
+          <div className="absolute inset-0 bg-black/30"></div>
+        </div>
 
         <motion.h2
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl mb-4"
+          className="text-3xl mb-4 text-white z-10"
         >
           Hi there!
         </motion.h2>
@@ -120,7 +138,7 @@ export default function Home() {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="text-5xl md:text-6xl font-bold max-w-3xl mx-auto leading-tight text-center"
+          className="text-5xl md:text-6xl font-bold max-w-3xl mx-auto leading-tight text-center text-white z-10"
         >
           I&apos;m Gaurav Kumar a{" "}
           <span className="text-gold dark:text-gold">
@@ -140,7 +158,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.5 }}
-          className="mt-8"
+          className="mt-8 z-10"
         >
           <Button asChild variant="default" className="bg-gold hover:bg-gold/90 text-navy rounded-full px-6 shadow-lg">
             <Link href="/projects">View My Work</Link>
@@ -151,17 +169,20 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.7 }}
           transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center z-10"
         >
-          <p className="text-sm mb-2">Scroll to explore</p>
+          <p className="text-sm mb-2 text-white">Scroll to explore</p>
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
           >
-            <ChevronRight size={24} className="rotate-90" />
+            <ChevronRight size={24} className="rotate-90 text-white" />
           </motion.div>
         </motion.div>
       </motion.section>
+
+      {/* Quote Carousel Section */}
+      <QuoteCarousel />
 
       {/* Projects Section */}
       <motion.section
@@ -262,7 +283,7 @@ export default function Home() {
                           className="bg-gold hover:bg-gold/90 text-navy rounded-full px-6 shadow-lg group"
                         >
                           <Link href={project.link}>
-                            View 
+                            View
                             <ArrowRight
                               className={`ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 ${index % 2 === 1 ? "order-first -ml-2 mr-2 group-hover:-translate-x-1 rotate-180" : ""}`}
                             />
@@ -356,3 +377,4 @@ export default function Home() {
     </div>
   )
 }
+
