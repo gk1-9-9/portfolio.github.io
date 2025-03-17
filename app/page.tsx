@@ -185,9 +185,6 @@ export default function Home() {
       {/* Quote Carousel Section */}
       <QuoteCarousel />
 
-      {/* Quote Carousel Section */}
-      <QuoteCarousel />
-
       {/* Projects Section */}
       <motion.section
         ref={projectsRef}
