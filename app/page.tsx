@@ -117,7 +117,7 @@ export default function Home() {
         {/* Mountain Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Mountain-hero.png-bRm40qOoVtp51IXaAxRv0IM52i4DFN.jpeg"
+            src="/Mountain-hero1.png?height=1080&width=1920"
             alt="Mountain path with light beam"
             fill
             priority
