@@ -11,6 +11,8 @@ import { LoadingAnimation } from "@/components/loading-animation"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Footer } from "@/components/footer"
 import { TypingAnimation } from "@/components/typing-animation"
+import { QuoteCarousel } from "@/components/quote-carousel"
+
 
 // Project data
 const projects = [
@@ -162,6 +164,9 @@ export default function Home() {
           </motion.div>
         </motion.div>
       </motion.section>
+
+      {/* Quote Carousel Section */}
+      <QuoteCarousel />
 
       {/* Projects Section */}
       <motion.section

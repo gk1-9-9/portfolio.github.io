@@ -63,7 +63,8 @@ export function Footer() {
               Gaurav Kumar
             </h3>
             <p className="text-slate-700 dark:text-slate-300 text-center md:text-left max-w-xs">
-              UI/UX Designer & Front End Developer creating engaging digital experiences
+              Engineering the future. | Designed with passion. | Built for impact.
+
             </p>
           </motion.div>
 
