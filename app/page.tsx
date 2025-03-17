@@ -147,9 +147,9 @@ export default function Home() {
               words={[
                 "UI/UX Designer",
                 "Front End Developer",
-                "Product Designer",
+                "Product Manager",
                 "Software Engineer",
-                "Visual Designer",
+                "Product Designer",
                 "Creative Coder",
               ]}
             />
