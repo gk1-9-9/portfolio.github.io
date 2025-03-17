@@ -238,7 +238,7 @@ export default function ContactPage() {
                         <motion.a
                           whileHover={{ y: -5, scale: 1.1 }}
                           transition={{ type: "spring", stiffness: 300 }}
-                          href="https://instagram.com"
+                          href="https://www.instagram.com/gk_1.9.9/"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="p-3 rounded-full bg-gold/10 text-gold hover:bg-gold/20 transition-colors"
@@ -376,19 +376,25 @@ export default function ContactPage() {
 
             {/* Office Image Section */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="mt-12 rounded-xl overflow-hidden h-64 md:h-80 relative"
-            >
-              <Image src="/placeholder.svg?height=400&width=1200" alt="Office space" fill className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                <div className="p-6 text-white">
-                  <h3 className="text-2xl font-bold mb-2">Let's create something amazing together</h3>
-                  <p className="max-w-2xl">Ready to bring your ideas to life? I'm just a message away.</p>
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="mt-12 rounded-xl overflow-hidden h-64 md:h-80 relative"
+                >
+                <Image
+                    src="/Mountain-hero.png?height=400&width=1200"
+                    alt="Office space"
+                    fill
+                    className="object-cover"
+                    style={{ objectPosition: 'center 20%' }}  // Shifts the image down
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                    <div className="p-6 text-white">
+                    <h3 className="text-2xl font-bold mb-2">Let's create something amazing together</h3>
+                    <p className="max-w-2xl">Ready to bring your ideas to life? I'm just a message away.</p>
+                    </div>
                 </div>
-              </div>
-            </motion.div>
+                </motion.div>
           </div>
         </motion.div>
       </div>
