@@ -14,6 +14,7 @@ import Image from "next/image"
 
 export default function ContactPage() {
   const [loading, setLoading] = useState(true)
+  const [submitting, setSubmitting] = useState(false)
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -35,22 +36,41 @@ export default function ContactPage() {
     setFormState((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // This would normally connect to a backend service
-    // For now, we'll just simulate a successful submission
-    setTimeout(() => {
-      setFormStatus("success")
-      setFormState({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
+    setSubmitting(true)
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formState),
       })
-
+      
+      const data = await response.json()
+      
+      if (response.ok) {
+        setFormStatus("success")
+        setFormState({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        })
+      } else {
+        console.error("Form submission error:", data.message)
+        setFormStatus("error")
+      }
+    } catch (error) {
+      console.error("Form submission error:", error)
+      setFormStatus("error")
+    } finally {
+      setSubmitting(false)
       // Reset status after 5 seconds
       setTimeout(() => setFormStatus(null), 5000)
-    }, 1000)
+    }
   }
 
   if (loading) {
@@ -305,6 +325,7 @@ export default function ContactPage() {
                           placeholder="Your name"
                           required
                           className="bg-white/5 border-gold/20 focus:border-gold/50"
+                          disabled={submitting}
                         />
                       </div>
 
@@ -324,6 +345,7 @@ export default function ContactPage() {
                           placeholder="your.email@example.com"
                           required
                           className="bg-white/5 border-gold/20 focus:border-gold/50"
+                          disabled={submitting}
                         />
                       </div>
                     </div>
@@ -343,6 +365,7 @@ export default function ContactPage() {
                         placeholder="What is this regarding?"
                         required
                         className="bg-white/5 border-gold/20 focus:border-gold/50"
+                        disabled={submitting}
                       />
                     </div>
 
@@ -362,12 +385,23 @@ export default function ContactPage() {
                         rows={5}
                         required
                         className="bg-white/5 border-gold/20 focus:border-gold/50"
+                        disabled={submitting}
                       />
                     </div>
 
-                    <Button type="submit" className="w-full bg-gold hover:bg-gold/90 text-navy rounded-full group">
-                      Send Message
-                      <Send className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-gold hover:bg-gold/90 text-navy rounded-full group" 
+                      disabled={submitting}
+                    >
+                      {submitting ? (
+                        <>Sending Message...</>
+                      ) : (
+                        <>
+                          Send Message
+                          <Send className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </>
+                      )}
                     </Button>
                   </form>
                 </div>
@@ -376,25 +410,25 @@ export default function ContactPage() {
 
             {/* Office Image Section */}
             <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                className="mt-12 rounded-xl overflow-hidden h-64 md:h-80 relative"
-                >
-                <Image
-                    src="/Mountain-hero.png?height=400&width=1200"
-                    alt="Office space"
-                    fill
-                    className="object-cover"
-                    style={{ objectPosition: 'center 20%' }}  // Shifts the image down
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                    <div className="p-6 text-white">
-                    <h3 className="text-2xl font-bold mb-2">Let's create something amazing together</h3>
-                    <p className="max-w-2xl">Ready to bring your ideas to life? I'm just a message away.</p>
-                    </div>
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="mt-12 rounded-xl overflow-hidden h-64 md:h-80 relative"
+            >
+              <Image
+                src="/Mountain-hero.png?height=400&width=1200"
+                alt="Office space"
+                fill
+                className="object-cover"
+                style={{ objectPosition: 'center 20%' }}  // Shifts the image down
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <div className="p-6 text-white">
+                  <h3 className="text-2xl font-bold mb-2">Let's create something amazing together</h3>
+                  <p className="max-w-2xl">Ready to bring your ideas to life? I'm just a message away.</p>
                 </div>
-                </motion.div>
+              </div>
+            </motion.div>
           </div>
         </motion.div>
       </div>
@@ -403,4 +437,3 @@ export default function ContactPage() {
     </div>
   )
 }
-
