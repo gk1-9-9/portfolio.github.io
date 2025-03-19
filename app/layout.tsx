@@ -3,6 +3,7 @@ import "@/app/globals.css"
 import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { SiteHeader } from "@/components/site-header"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 const inter = Inter({ subsets: ["latin"] })
@@ -21,7 +22,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return (
+  return ( 
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
@@ -31,6 +32,7 @@ export default function RootLayout({
             <main className="flex-1">{children}</main>
           </div>
         </ThemeProvider>
+        <SpeedInsights />
       </body>
     </html>
   )

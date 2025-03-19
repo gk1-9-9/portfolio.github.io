@@ -12,6 +12,7 @@ import { LoadingAnimationmain } from "@/components/loading-animation-1"
 import { Footer } from "@/components/footer"
 import { TypingAnimation } from "@/components/typing-animation"
 import { QuoteCarousel } from "@/components/quote-carousel"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 // Project data
@@ -23,7 +24,7 @@ const projects = [
     description: "Interactive UI/UX Design Inspired by Inside Out",
     image: "/Sentify_main.png?height=600&width=300",
     secondaryImage: "/Sentify_back.png?height=600&width=300",
-    link: "/projects/sentify",
+    link: "https://www.figma.com/proto/3AJTdLIQxEDhWmt6y5kpOb/designathon?page-id=0%3A1&node-id=10-836&starting-point-node-id=10%3A836&t=52IKbJpSs9jQiV0J-1",
   },
   {
     id: "starwars",
@@ -31,7 +32,7 @@ const projects = [
     emoji: "✨",
     description: "A Fan Art Showcase Platform",
     image: "/Starwars-1.png?height=500&width=600",
-    link: "/projects/starwars",
+    link: "https://www.figma.com/proto/AttwGLzhNcZ3fQ0hianHGb/Starwars?page-id=0%3A1&node-id=1-3&p=f&viewport=308%2C484%2C0.15&t=XXIOaisCZQeTmM23-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=102%3A120",
   },
   {
     id: "news-summify",
@@ -40,7 +41,7 @@ const projects = [
     description: "Keyword-based Article Discovery & Summarization",
     image: "/summary.png?height=600&width=300",
     secondaryImage: "/suggestion.png?height=800&width=400",
-    link: "/projects/news-summify",
+    link: "https://github.com/gk1-9-9/OpenHack24-Summify",
   },
 ]
 
