@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb';
 
-const uri = process.env.MONGODB_URI;
+const uri = "mongodb+srv://Gaurav:P0lfV04v1vpQoME1@clouded-gk.yruxu.mongodb.net/Contact-information?retryWrites=true&w=majority&appName=clouded-gk";
 if (!uri) {
   console.error('MONGODB_URI environment variable is not defined');
 }
